@@ -6,8 +6,7 @@ export function activate(context: vscode.ExtensionContext) {
   let disposable = vscode.commands.registerCommand(
     "fuzzy-fuzzy.search",
     async () => {
-      vscode.window.showInformationMessage("呼ばれた");
-      // vscode.window.showQuickPick([]);
+      // vscode.window.showInformationMessage("呼ばれた");
       const placeHolder = "曖昧に検索したい文字列を半角スペース区切りでどうぞ";
       const typedText = await vscode.window.showInputBox({
         placeHolder: placeHolder,
@@ -18,16 +17,12 @@ export function activate(context: vscode.ExtensionContext) {
       if (typedText) {
         // vscode.window.showInformationMessage(`Got: ${typedText}`);
         const fuzzyRegexpText = typedText.replaceAll(/ +/g, ".* .*");
-        const aaa = await vscode.commands.executeCommand(
-          "search.action.openNewEditor",
-          {
-            query: fuzzyRegexpText,
-            triggerSearch: true,
-            focusResults: false,
-            regexp: true,
-          }
-        );
-        vscode.window.showInformationMessage(typeof aaa);
+        await vscode.commands.executeCommand("search.action.openNewEditor", {
+          query: fuzzyRegexpText,
+          triggerSearch: true,
+          focusResults: false,
+          regexp: true,
+        });
       } else {
         // vscode.window.showWarningMessage(`Failed to get`);
       }
