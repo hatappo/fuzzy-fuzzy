@@ -14,8 +14,8 @@
   "contributes": {
     "commands": [
       {
-        "command": "fuzzy-fuzzy.helloWorld",
-        "title": "Hello World"
+        "command": "fuzzy-fuzzy.search",
+        "title": "fuzzy search"
       }
     ]
   },
